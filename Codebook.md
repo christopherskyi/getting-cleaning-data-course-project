@@ -44,7 +44,7 @@ To obtain the final tidy data set, 'tidyDataSet,' the R script will perform the 
 
 ## TidyDataSet Variables
 
-The tidy data set contains the  86 derived mean and standard devivation variables, plus subject and activity variables, for a total of 88 variables. All variables except 'activity' are numbers; activity is a character variable:
+The tidy data set contains the  86 derived mean and standard devivation variables, plus subject and activity variables, for a total of 88 variables. The values of the 86 derived mean and standard devivation variables is an average for each activity for each each subject. All variables except 'activity' are numbers; activity is a character variable:
 
 1       subject
 2       activity
