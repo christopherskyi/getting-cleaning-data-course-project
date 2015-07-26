@@ -102,12 +102,12 @@ meanStdNames <- c(meanVariableNames,stdVariableNames,subActNames)
 meanStdDataSet <- mergedData[,meanStdNames]
 
 ##########################################################################################################
-# 3. Use descriptive activity names to name the activities in the data set
+# Step 3. Use descriptive activity names to name the activities in the data set
 ##########################################################################################################
 meanStdDataSet <- merge(meanStdDataSet,iv_activityNames,by.x="activityid",by.y="V1",all=TRUE)
 
 ##########################################################################################################
-# 4. Appropriately label the data set with descriptive activity names. 
+# Step 4. Appropriately label the data set with descriptive activity names. 
 ##########################################################################################################
 
 # get all the current column names
@@ -126,7 +126,7 @@ meanStdDataSetnames <- sub("^(t)","time-",meanStdDataSetnames)
 colnames(meanStdDataSet) <- meanStdDataSetnames
 
 ##########################################################################################################
-# 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable 
+# Step 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable 
 #    for each activity and each subject.
 ##########################################################################################################
 
