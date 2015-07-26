@@ -91,14 +91,6 @@ mergedData <- rbind(dv_trainData_c,dv_testData_c)
 # Step 2: Extract only the measurements on the mean and standard deviation for each measurement
 # (but also include the activityid and subject variables, as I will need those later)
 mergedDataVariables <- names(mergedData) # get all columergedDataVariables names
-# # think of mergedDataVariables as a columergedDataVariables. Now return logical vector where each vector position (think 'row') in mergedDataVariables is assigned TRUE if ... else FALSE
-# logicalVector = (grepl("activityid",mergedDataVariables) | grepl("subject",mergedDataVariables) | grepl("mean",mergedDataVariables) | grepl("std",mergedDataVariables) )
-# 
-# rcolnames <- grep("-(mean|std)\\(\\)",mergedDataVariables,value=TRUE )
-# 
-# # return 1st, 3rd, 5th & 6th rows logically
-# # this will also return all rows from the 7th to the end
-# r <- mergedData[c(TRUE,FALSE,TRUE,FALSE,TRUE,TRUE),]
 
 # meanVariableNames & stdVariableNames will have 86 total names
 meanVariableNames <- grep("mean",tolower(mergedDataVariables),value=TRUE)
