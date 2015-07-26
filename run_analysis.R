@@ -81,7 +81,7 @@ colnames(dv_testData) <- dv_names$V2 # features[,2]
 colnames(train_activityID) <- "activityid";
 colnames(test_activityID) <- "activityid";
 
-# create complete training and test data sets: add subject variable and activityId variable (as a columergedDataVariables) to x_train & x_test 
+# create complete training and test data sets: add subject variable and activityId variable to x_train & x_test 
 dv_trainData_c <- cbind(dv_trainData,iv_subjectTrain,train_activityID)
 dv_testData_c <- cbind(dv_testData,iv_subjectTest,test_activityID)
 

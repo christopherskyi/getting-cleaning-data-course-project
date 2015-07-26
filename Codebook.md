@@ -28,6 +28,20 @@ DOWNLOAD THE ZIP FILE INTO THE FOLDER WHERE YOU PUT the run_analysis.R SCRIPT AN
 
 After that, just run the R script to create the final tidy data set.
 
+### Specific Steps:
+To obtain the final tidy data set, 'tidyDataSet,' the R script will perform the following 
+5 transformations:
+
+* Merge the training and the test sets to create one data set.
+  It creates complete training and test data sets by adding subject variable and activityId   variable to dv_trainData & dv_testData using cbind; It then build full data set by appending test onto train using rbind.
+
+* Extract only the measurements on the mean and standard deviation for each measurement.
+  It creates a vector of only the column names I need and then It simply subset the merged data set by those column names.
+  
+* It applies descriptive activity names to the merged data set.
+
+* From the data set at this point, it then creates a second, independent tidy data set with the average of each variable for each activity and each subject using the ddply method.
+
 ## TidyDataSet Variables
 
 The tidy data set contains the  86 derived mean and standard devivation variables, plus subject and activity variables, for a total of 88 variables. All variables except 'activity' are numbers; activity is a character variable.
