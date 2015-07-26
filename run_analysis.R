@@ -31,16 +31,15 @@
 # 4. Appropriately label the data set with descriptive activity names. 
 # 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-
 ##########################################################################################################
 
 # load required libraries
 library(plyr)
 library(dplyr)
 
+##########################################################################################################
 # Step 1: Merge the training and the test sets to create one data set.
-
-
+##########################################################################################################
 # Create independent variable (iv) and dependent variable (dv) data sets
 
 # Read the 561 attributes (called a 'vector of features' in README.txt) into a data frame:
@@ -68,10 +67,8 @@ iv_subjectTest <- read.table('UCI HAR Dataset/test/subject_test.txt',header=FALS
 # Read in training data (called the 'Training set'in README.txt) into a data frame:
 dv_trainData <- read.table('UCI HAR Dataset/train/X_train.txt',header=FALSE)
 
-
 # Read in test data (called the 'Test set'in README.txt) into a data frame:
 dv_testData <- read.table('UCI HAR Dataset/test/x_test.txt',header=FALSE)
-
 
 # Assigin human readable variable names to all data sets
 colnames(iv_subjectTrain) <- "subject"
@@ -88,8 +85,10 @@ dv_testData_c <- cbind(dv_testData,iv_subjectTest,test_activityID)
 # build full data set by appending test onto train
 mergedData <- rbind(dv_trainData_c,dv_testData_c)
 
+##########################################################################################################
 # Step 2: Extract only the measurements on the mean and standard deviation for each measurement
 # (but also include the activityid and subject variables, as I will need those later)
+##########################################################################################################
 mergedDataVariables <- names(mergedData) # get all columergedDataVariables names
 
 # meanVariableNames & stdVariableNames will have 86 total names
@@ -102,11 +101,14 @@ subActNames <- c("activityid","subject")
 meanStdNames <- c(meanVariableNames,stdVariableNames,subActNames)
 meanStdDataSet <- mergedData[,meanStdNames]
 
+##########################################################################################################
 # 3. Use descriptive activity names to name the activities in the data set
-
+##########################################################################################################
 meanStdDataSet <- merge(meanStdDataSet,iv_activityNames,by.x="activityid",by.y="V1",all=TRUE)
 
+##########################################################################################################
 # 4. Appropriately label the data set with descriptive activity names. 
+##########################################################################################################
 
 # get all the current column names
 meanStdDataSetnames <- colnames(meanStdDataSet)
@@ -123,7 +125,10 @@ meanStdDataSetnames <- sub("^(t)","time-",meanStdDataSetnames)
 # reassign more descriptive column names
 colnames(meanStdDataSet) <- meanStdDataSetnames
 
-# 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+##########################################################################################################
+# 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable 
+#    for each activity and each subject.
+##########################################################################################################
 
 # remove 'activitiyid' column
 meanStdDataSet <- subset(meanStdDataSet, select=-c(activityid))
