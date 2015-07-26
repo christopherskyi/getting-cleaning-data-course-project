@@ -36,4 +36,5 @@ To obtain the final tidy data set, 'tidyDataSet,' the R script will perform the 
 * Appropriately label the data set with descriptive activity names. 
 * From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+See the CodeBook.md for more details about data sets and variables.
  
