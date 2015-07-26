@@ -19,7 +19,9 @@ A full description of the study's design can be found [here](http://archive.ics.
 
 The raw data set can be downloaded from [here](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) 
 
-DOWNLOAD THE ZIP FILE INTO THE FOLDER WHERE YOU PUT THIS SCRIPT AND UNZIP FROM THERE.
+DOWNLOAD THE ZIP FILE INTO THE FOLDER WHERE YOU PUT the run_analysis.R SCRIPT AND UNZIP IT THERE.
+
+After that, just run the R script to create the final tidy data set.
 
 The R script was created with R version 3.2.0 (2015-04-16)
 
