@@ -133,7 +133,45 @@ colnames(meanStdDataSet) <- meanStdDataSetnames
 # remove 'activitiyid' column
 meanStdDataSet <- subset(meanStdDataSet, select=-c(activityid))
 
+# So, in meanStdDataSet, I have 10299 obs (row), one observation (of each of the 88 vars)
+# for each subject doing each activity:
+# > table(meanStdDataSet$subject,meanStdDataSet$activity)
+# 
+#    laying sitting standing walking walking_downstairs walking_upstairs
+# 1      50      47       53      95                 49               53
+# 2      48      46       54      59                 47               48
+# .
+# .
+# .
+# 29     69      60       65      53                 48               49
+# 30     70      62       59      65                 62               65
+
+# we measured all 88 variables 50 times for subject 1 while they were laying
+# we measured all 88 variables 47 times for subject 1 while they were sitting
+# .
+# .
+# .
+# we measured all 88 variables 65 times for subject 30 while they were walking_upstairs
+
+# What I want now is the avg of each of the 88 variables 
+# for each subject (e.g., 1) doing each activity (e.g., laying), e.g., 
+# for subject=1 and activity=laying, we have 50 measures of time-bodyacc-mean-x,
+# so the avg of time-bodyacc-mean-x is sum(time-bodyacc-mean-x)/50.
+# 
+# And I want it in a table where the first two columns are subject 
+# completely crossed with activity and all the rest of the columns are 
+# the means of the 88 variables, i.e., 30 subject by 6 activities = 180 rows
+
+# Note: meanStdDataSet is tidy 
+
 tidyDataSet = ddply(meanStdDataSet, c("subject","activity"), numcolwise(mean))
 
+# or use dplyr:
+tidyDataSet.new <- meanStdDataSet %>%
+                group_by(subject,activity) %>%
+                summarise_each(funs(mean)) # pass to funs anything I want
+  
+
 # Export the tidyData set 
-write.table(tidyDataSet, 'TidyData/tidyData.txt',row.name=FALSE,sep='\t');
+write.table(tidyDataSet, 'TidyData/tidyData.txt',row.name=FALSE,sep='\t')
+
